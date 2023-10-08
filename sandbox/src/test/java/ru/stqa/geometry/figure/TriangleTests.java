@@ -2,6 +2,8 @@ package ru.stqa.geometry.figure;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.function.Executable;
+import org.testng.asserts.Assertion;
 
 public class TriangleTests {
     @Test
@@ -16,4 +18,21 @@ public class TriangleTests {
         double result =a.triangleArea();
         Assertions.assertEquals(6.49519052838329, result);
     }
+    @Test
+    void cannotCreateTriangleWithNegativeSide() {
+        try {
+            new Triangle(-4.0, -4.0, 4 );
+            Assertions.fail();
+        } catch (IllegalArgumentException exception) {
+        }
+    }
+    @Test
+    void cannotCreateTriangleWithInvalidSide() {
+        try {
+            new Triangle(1.0, 2.0, 5.0);
+            Assertions.fail();
+        } catch (IllegalArgumentException exception) {
+        }
+    }
 }
+
