@@ -1,5 +1,7 @@
 package ru.stqa.geometry.figure;
 
+import java.util.Objects;
+
 import static java.lang.Math.sqrt;
 
 public class Triangle {
@@ -38,5 +40,22 @@ public class Triangle {
         return sqrt(p*(p-side1)*(p-side2)*(p-side3));
     }
 
+    @Override
+    public boolean equals(final Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Triangle triangle = (Triangle) o;
+        return (Double.compare(triangle.side1, side1) == 0 && Double.compare(triangle.side2, side2) == 0 && Double.compare(triangle.side3, side3) == 0)
+                || (Double.compare(triangle.side1, side1) == 0 && Double.compare(triangle.side2, side3) == 0 && Double.compare(triangle.side3, side2) == 0)
+                || (Double.compare(triangle.side1, side2) == 0 && Double.compare(triangle.side2, side1) == 0 && Double.compare(triangle.side3, side3) == 0)
+                || (Double.compare(triangle.side1, side2) == 0 && Double.compare(triangle.side2, side3) == 0 && Double.compare(triangle.side3, side1) == 0)
+                || (Double.compare(triangle.side1, side3) == 0 && Double.compare(triangle.side2, side1) == 0 && Double.compare(triangle.side3, side2) == 0)
+                || (Double.compare(triangle.side1, side3) == 0 && Double.compare(triangle.side2, side2) == 0 && Double.compare(triangle.side3, side1) == 0);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(side1, side2, side3);
+    }
 }
 
