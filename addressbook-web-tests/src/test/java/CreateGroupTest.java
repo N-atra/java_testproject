@@ -15,7 +15,6 @@ public class CreateGroupTest {
             driver = new ChromeDriver();
             Runtime.getRuntime().addShutdownHook(new Thread(driver::quit));
             driver.get("http://localhost/addressbook/");
-            driver.manage().window().setSize(new Dimension(1322, 824));
             driver.findElement(By.name("user")).sendKeys("admin");
             driver.findElement(By.name("pass")).sendKeys("secret");
             driver.findElement(By.xpath("//input[@value='Login']")).click();
@@ -45,7 +44,6 @@ public class CreateGroupTest {
         } catch (NoSuchElementException exception) {
             return false;
         }
-
     }
 
     @Test
