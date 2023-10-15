@@ -20,6 +20,7 @@ public class DeleteGroupTest {
             driver.findElement(By.xpath("//input[@value='Login']")).click();
         }
     }
+
     @AfterEach
     public void tearDown() {
         driver.quit();
@@ -29,14 +30,15 @@ public class DeleteGroupTest {
     public void CanDeleteGroup() {
         driver.findElement(By.linkText("groups")).click();
 
-        if (isElementPresent(By.name("selected[]"))) {
-            driver.findElement(By.name("selected[]")).click();
-            driver.findElement(By.xpath("(//input[@name=\'delete\'])[2]")).click();
+        if (!isElementPresent(By.name("selected[]"))) {
+            driver.findElement(By.name("new")).click();
+            driver.findElement(By.name("submit")).click();
             driver.findElement(By.linkText("group page")).click();
         }
-        else {
-            System.out.println("Группы отсутствуют");
-        }
+
+        driver.findElement(By.name("selected[]")).click();
+        driver.findElement(By.xpath("(//input[@name=\'delete\'])[2]")).click();
+        driver.findElement(By.linkText("group page")).click();
     }
 
     private boolean isElementPresent(final By locator) {
@@ -47,5 +49,5 @@ public class DeleteGroupTest {
             return false;
         }
     }
-
 }
+
