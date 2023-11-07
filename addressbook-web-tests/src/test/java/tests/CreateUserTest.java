@@ -1,69 +1,36 @@
 package tests;
-import org.junit.jupiter.api.BeforeEach;
+
+import model.UserData;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import java.time.Duration;
 
-public class CreateUserTest {
-    private static WebDriver driver;
-
-    @BeforeEach
-    public void setUp() {
-        if (driver == null) {
-            driver = new ChromeDriver();
-            Runtime.getRuntime().addShutdownHook(new Thread(driver::quit));
-            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
-            driver.get("http://localhost/addressbook/");
-            driver.findElement(By.name("user")).sendKeys("admin");
-            driver.findElement(By.name("pass")).sendKeys("secret");
-            driver.findElement(By.xpath("//input[@value='Login']")).click();
-        }
-    }
+public class CreateUserTest extends TestBase2 {
 
     @Test
     public void CanCreateUser() {
-        driver.findElement(By.linkText("add new")).click();
-        driver.findElement(By.name("firstname")).sendKeys("name");
-        driver.findElement(By.name("middlename")).sendKeys("middle");
-        driver.findElement(By.name("lastname")).sendKeys("last");
-        driver.findElement(By.name("nickname")).sendKeys("nick");
-        driver.findElement(By.name("title")).sendKeys("title");
-        driver.findElement(By.name("company")).sendKeys("company");
-        driver.findElement(By.name("address")).sendKeys("address");
-        driver.findElement(By.name("home")).sendKeys("12345");
-        driver.findElement(By.name("mobile")).sendKeys("987654321");
-        driver.findElement(By.name("work")).sendKeys("565656");
-        driver.findElement(By.name("fax")).sendKeys("5656");
-        driver.findElement(By.name("email")).sendKeys("email@test.com");
-        driver.findElement(By.name("email2")).sendKeys("rmail2@test.com");
-        driver.findElement(By.name("email3")).sendKeys("email3@test.com");
-        driver.findElement(By.name("homepage")).sendKeys("home");
-        {
-            WebElement dropdown = driver.findElement(By.name("bday"));
-            dropdown.findElement(By.xpath("//option[. = '12']")).click();
-        }
-        {
-            WebElement dropdown = driver.findElement(By.name("bmonth"));
-            dropdown.findElement(By.xpath("//option[. = 'February']")).click();
-        }
-        driver.findElement(By.name("byear")).sendKeys("2000");
-        {
-            WebElement dropdown = driver.findElement(By.name("aday"));
-            dropdown.findElement(By.xpath("//option[. = '13']")).click();
-        }
-        driver.findElement(By.name("amonth")).click();
-        {
-            WebElement dropdown = driver.findElement(By.name("amonth"));
-            dropdown.findElement(By.xpath("//option[. = 'January']")).click();
-        }
-        driver.findElement(By.name("ayear")).sendKeys("2010");
-        driver.findElement(By.name("address2")).sendKeys("adress home");
-        driver.findElement(By.name("phone2")).sendKeys("12");
-        driver.findElement(By.name("notes")).sendKeys("notes");
-        driver.findElement(By.xpath("(//input[@name=\'submit\'])[2]")).click();
-        driver.findElement(By.linkText("home page")).click();
+
+        createUser(new UserData("name",
+                "middle",
+                "last",
+                "nick",
+                "title",
+                "company",
+                "address",
+                "12345",
+                "987654321",
+                "565656",
+                "5656",
+                "email@test.com",
+                "rmail2@test.com",
+                "email3@test.com",
+                "home",
+                "12",
+                "February",
+                "2000",
+                "13",
+                "January",
+                "2010",
+                "address home",
+                "12",
+                "notes"));
     }
 }
