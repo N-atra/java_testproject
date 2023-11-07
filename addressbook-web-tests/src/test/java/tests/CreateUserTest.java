@@ -1,14 +1,16 @@
 package tests;
 
+import manager.ApplicationManager;
+import manager.UserHelper;
 import model.UserData;
 import org.junit.jupiter.api.Test;
 
-public class CreateUserTest extends TestBase2 {
+public class CreateUserTest extends TestBase {
 
     @Test
     public void CanCreateUser() {
 
-        createUser(new UserData("name",
+        Helper.createUser(new UserData("name",
                 "middle",
                 "last",
                 "nick",

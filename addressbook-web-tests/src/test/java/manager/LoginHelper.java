@@ -1,12 +1,10 @@
 package manager;
-
 import org.openqa.selenium.By;
 
 public class LoginHelper {
     private final ApplicationManager manager;
 
     public LoginHelper(ApplicationManager manager) {
-
         this.manager = manager;
     }
 

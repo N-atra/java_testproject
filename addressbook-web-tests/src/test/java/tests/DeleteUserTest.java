@@ -4,12 +4,12 @@ import model.UserData;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 
-public class DeleteUserTest extends TestBase2 {
+public class DeleteUserTest extends TestBase {
 
     @Test
     public void deleteUser() {
-        if (!isElementPresent(By.xpath("//td/input"))) {
-            createUser(new UserData("name",
+        if (!app.isElementPresent(By.xpath("//td/input"))) {
+            Helper.createUser(new UserData("name",
                     "middle",
                     "last",
                     "nick",
@@ -34,6 +34,6 @@ public class DeleteUserTest extends TestBase2 {
                     "12",
                     "notes"));
         }
-        removeUser();
+        Helper.removeUser();
     }
 }
