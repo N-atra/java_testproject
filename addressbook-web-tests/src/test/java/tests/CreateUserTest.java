@@ -10,7 +10,7 @@ public class CreateUserTest extends TestBase {
     @Test
     public void CanCreateUser() {
 
-        Helper.createUser(new UserData("name",
+        app.users().createUser(new UserData("name",
                 "middle",
                 "last",
                 "nick",

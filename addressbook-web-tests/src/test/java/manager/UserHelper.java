@@ -20,14 +20,12 @@ public class UserHelper {
     }
 
     public boolean isUserPresent() {
-        openUserPage();
-        return manager.isElementPresent(By.name("selected[]"));
+        return manager.isElementPresent(By.xpath("//td/input"));
     }
 
 
         public void createUser(final UserData user) {
             openUserPage();
-            manager.driver.findElement(By.linkText("add new")).click();
             manager.driver.findElement(By.name("firstname")).sendKeys(user.getFirstname());
             manager.driver.findElement(By.name("middlename")).sendKeys(user.getMiddlename());
             manager.driver.findElement(By.name("lastname")).sendKeys(user.getLastname());

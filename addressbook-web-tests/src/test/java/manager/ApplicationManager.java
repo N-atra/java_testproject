@@ -10,6 +10,7 @@ public class ApplicationManager {
     protected WebDriver driver;
     private LoginHelper session;
     private GroupHelper groups;
+    private UserHelper users;
 
 
     public void init(String browser) {
@@ -51,6 +52,13 @@ public class ApplicationManager {
         } catch (NoSuchElementException exception) {
             return false;
         }
+    }
+
+     public UserHelper users() {
+        if (users == null) {
+            users = new UserHelper(this);
+        }
+        return users;
     }
 
 }

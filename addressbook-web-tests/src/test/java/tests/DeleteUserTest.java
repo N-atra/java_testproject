@@ -8,8 +8,9 @@ public class DeleteUserTest extends TestBase {
 
     @Test
     public void deleteUser() {
-        if (!app.isElementPresent(By.xpath("//td/input"))) {
-            Helper.createUser(new UserData("name",
+        app.users().openUserPage();
+        if (!app.users().isUserPresent()) {
+            app.users().createUser(new UserData("name",
                     "middle",
                     "last",
                     "nick",
@@ -34,6 +35,6 @@ public class DeleteUserTest extends TestBase {
                     "12",
                     "notes"));
         }
-        Helper.removeUser();
+        app.users().removeUser();
     }
 }
